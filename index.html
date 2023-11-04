@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Form</title>
+    <style>
+        .hidden { display: none; }
+
+        body {
+      background-image: url('genik.jpeg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    </style>
+</head>
+<body style="background-image: url('background.jpg');">
+
+<select id="formSelector" onchange="showForm()">
+    <option value="">Select an option</option>
+    <option value="1">line plot</option>
+    <option value="2">bar plot</option>
+    <option value="3">histogram</option>
+    <option value="4">pie chart</option>
+    <option value="5">dot plot</option>
+    <option value="6">area plot</option>
+    <option value="7">box plot</option>
+    <option value="8">violin plot</option>
+    <option value="9">countour plot</option>
+    <option value="10">scatter plot</option>
+</select>
+
+<div id="form1" class="hidden">
+    <h2>LINE PLOT</h2>
+
+    <form id="line plot">
+        <label for="xlabel">X Label:</label>
+        <input type="text" id="xlabel" name="xlabel"><br><br>
+
+        <label for="ylabel">Y Label:</label>
+        <input type="text" id="ylabel" name="ylabel"><br><br>
+
+        <label for="xmin">X Min:</label>
+        <input type="text" id="xmin" name="xmin"><br><br>
+
+        <label for="xmax">X Max:</label>
+        <input type="text" id="xmax" name="xmax"><br><br>
+
+        <label for="ymin">Y Min:</label>
+        <input type="text" id="ymin" name="ymin"><br><br>
+
+        <label for="ymax">Y Max:</label>
+        <input type="text" id="ymax" name="ymax"><br><br>
+
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title"><br><br>
+
+        <label for="grid">Grid (yes/no):</label>
+        <select id="grid" name="Grid">
+            <option value="yes">YES</option>
+            <option value="no">NO</option>
+          
+        </select><br><br>
+
+        <label for="legend">Legend:</label>
+        <input type="text" id="legend" name="legend"><br><br>
+
+        <label for="coordinates">Coordinates (format: x1,y1;x2,y2;...):</label>
+        <input type="text" id="coordinates" name="coordinates"><br><br>
+
+        <label for="legendPosition">Legend Position:</label>
+            <select id="legendPosition" name="legendPosition">
+                <option value="north">north</option>
+                 <option value="north west">north west</option>
+                <option value="north east">north east</option>
+                <option value="center">center</option>
+                <option value="west">west</option>
+                <option value="east">east</option>
+                <option value="south">south</option>
+                <option value="south west">south west</option>
+                <option value="south east">south east</option>
+                <option value="outer north east">outer north east</option>
+</select><br><br>
+
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color"><br><br>
+
+        <input type="button" value="Generate" onclick="generateLatex1()">
+    </form>
+    <h3>Generated LaTeX Code:</h3>
+    <textarea id="output1" rows="15" cols="50"></textarea>
+</div>
+
+<div id="form2" class="hidden">
+    <h2>BAR PLOT</h2>
+    <form id="barGraphForm">
+        <label for="title2">Graph Title:</label>
+        <input type="text" id="title2" name="title2"><br><br>
+
+        <label for="xLabel">X-Axis Label:</label>
+        <input type="text" id="xLabel" name="xLabel"><br><br>
+
+        <label for="yLabel">Y-Axis Label:</label>
+        <input type="text" id="yLabel" name="yLabel"><br><br>
+
+        <label for="barColor">Bar Color:</label>
+        <input type="text" id="barColor" name="barColor"><br><br>
+
+        <label for="barWidth">Bar Width:</label>
+        <input type="number" id="barWidth" name="barWidth"><br><br>
+
+        <label for="ybar">Y-BAR:</label>
+        <input type="number" id="ybar" name="ybar"><br><br>
+
+        <label for="xData">X-axis Data (comma-separated):</label>
+        <textarea id="xData" name="xData" rows="4" cols="50"></textarea><br><br>
+
+        <label for="yData">Y-axis Data (comma-separated):</label>
+        <textarea id="yData" name="yData" rows="4" cols="50"></textarea><br><br>
+
+        <input type="button" value="Generate LaTeX Code" onclick="generateLaTeX2()">
+    </form>
+    <h3>Generated LaTeX Code:</h3>
+    <textarea id="output2" rows="15" cols="50"></textarea>
+
+</div>
+<div id="form3" class="hidden">
+    <h3>HISTOGRAM</h3>
+    
+<form id="histogramForm">
+    <label for="xlabel3">X-axis Label:</label><br>
+    <input type="text" id="xlabel3" name="xlabel3"><br><br>
+    
+    <label for="ylabel3">Y-axis Label:</label><br>
+    <input type="text" id="ylabel3" name="ylabel3"><br><br>
+    
+    <label for="title3">Title:</label><br>
+    <input type="text" id="title3" name="title3"><br><br>
+    
+    <label for="datapoints3">Data Points (comma-separated):</label><br>
+    <textarea id="datapoints3" name="datapoints3" rows="4" cols="50"></textarea><br><br>
+    
+    <label for="bins">Number of Bins:</label><br>
+    <input type="number" id="bins3" name="bins3"><br><br>
+    <label for="d3">Data min:</label><br>
+    <input type="number" id="d3" name="d3"><br><br>
+    <label for="da3">Data max:</label><br>
+    <input type="number" id="da3" name="da3"><br><br>
+    
+    
+    
+    <label for="color3">Bar Color (e.g., blue!50):</label><br>
+    <input type="text" id="color3" name="color3"><br><br>
+    
+    <input type="button" value="Generate LaTeX Code" onclick="generateLatex3()">
+</form>
+
+<h3>Generated LaTeX Code:</h3>
+<textarea id="output3" rows="15" cols="50"></textarea>
+</div>
+<div id="form4" class="hidden">
+    <h3>PIE CHART</h3>
+    <form id="chartForm">
+        <label for="categories">Categories (comma-separated):</label><br>
+        <input type="text" id="categories" name="categories" required><br>
+
+        <label for="values">Values (comma-separated):</label><br>
+        <input type="text" id="values" name="values" required><br>
+
+        <label for="title">Chart Title (optional):</label><br>
+        <input type="text" id="title" name="title"><br>
+
+        <input type="button" value="Generate LaTeX Code" onclick="generateLatexCode4()">
+    </form>
+    
+    <h3>Generated LaTeX Code:</h3>
+    <textarea id="output4" row="500" cols="50"></textarea>
+</div>
+<div id="form5" class="hidden">
+    <h3>DOT PLOT</h3>
+    <form id="dotPlotForm">   
+        <label for="dataPoints">Data Points (comma separated):</label>
+        <input type="text" id="dataPoints" placeholder="e.g. 5,3,7,2">
+        <br><br>
+        
+        <label for="title">Title:</label>
+        <input type="text" id="title">
+        <br><br>
+
+        <label for="xLabel">X-axis Label:</label>
+        <input type="text" id="xLabel">
+        <br><br>
+
+        <label for="yLabel">Y-axis Label:</label>
+        <input type="text" id="yLabel">
+        <br><br>
+        
+  
+
+        <input type="button" value="Generate LaTeX Code" onclick="generateLaTeX5()">
+    </form>
+
+    <h3>Generated LaTeX Code:</h3>
+    <textarea id="output5" rows="15" cols="50"></textarea>
+</div>
+<div id="form6" class="hidden">
+    <h3>AREA PLOT</h3>
+    <form id="latexPlotForm">
+        <div>
+            <label for="title">Plot Title:</label>
+            <input type="text" id="title" name="title" required>
+        </div>
+        <div>
+            <label for="xlabel">X-axis Label:</label>
+            <input type="text" id="xlabel" name="xlabel" required>
+        </div>
+        <div>
+            <label for="ylabel">Y-axis Label:</label>
+            <input type="text" id="ylabel" name="ylabel" required>
+        </div>
+        <div>
+            <label for="dataSet1">Data Set 1 (comma-separated x,y pairs):</label><br><br><br>
+            <textarea id="dataSet1" name="dataSet1" rows="3" cols="50" required></textarea>
+        </div>
+        <div>
+            <label for="dataSet2">Data Set 2 (comma-separated x,y pairs):</label><br><br><br>
+            <textarea id="dataSet2" name="dataSet2" rows="3" cols="50"></textarea>
+        </div>
+        <button type="button" onclick="generateLatexCode6()">Generate LaTeX Code</button>
+    </form>
+    <h2>Generated LaTeX Code:</h2>
+<textarea id="output6" rows="20" cols="50"></textarea>
+</div>
+<div id="form7" class=""hidden>
+    <h3>BOX PLOT</h3>
+    <form id="boxplotForm">
+        <label for="label1">X-Tick Label 1:</label>
+        <input type="text" id="label1" name="label1"><br><br>
+        <label for="label2">X-Tick Label 2:</label>
+        <input type="text" id="label2" name="label2"><br><br>
+        <label for="label3">X-Tick Label 3:</label>
+        <input type="text" id="label3" name="label3"><br><br>
+        <label for="median">Median:</label>
+        <input type="number" id="median" name="median"><br><br>
+        <label for="upperQuartile">Upper Quartile:</label>
+        <input type="number" id="upperQuartile" name="upperQuartile"><br><br>
+        <label for="lowerQuartile">Lower Quartile:</label>
+        <input type="number" id="lowerQuartile" name="lowerQuartile"><br><br>
+        <label for="upperWhisker">Upper Whisker:</label>
+        <input type="number" id="upperWhisker" name="upperWhisker"><br><br>
+        <label for="lowerWhisker">Lower Whisker:</label>
+        <input type="number" id="lowerWhisker" name="lowerWhisker"><br><br>
+        <label for="outliers">Outliers (comma-separated):</label>
+        <input type="text" id="outliers" name="outliers"><br><br>
+        <input type="button" value="Generate LaTeX Code" onclick="generateLaTeXCode7()">
+    </form>
+    
+    <textarea id="output7" rows="20" cols="70" readonly></textarea>
+</div>
+<div id="form8" class="hidden">
+    <h3>VIOLIN PLOT</h3>
+    <form id="violinPlotForm">
+        <label for="title">Plot Title:</label><br>
+        <input type="text" id="title" name="title"><br><br>
+        
+        <label for="xAxisLabel">X-Axis Label:</label><br>
+        <input type="text" id="xAxisLabel" name="xAxisLabel"><br><br>
+        
+        <label for="yAxisLabel">Y-Axis Label:</label><br>
+        <input type="text" id="yAxisLabel" name="yAxisLabel"><br><br>
+        
+        <label for="dataPairs">Data Pairs (each pair on a new line):</label><br>
+        <textarea id="dataPairs" name="dataPairs" rows="10" cols="20" placeholder="(x,y)"></textarea><br><br>
+        
+        <label for="violinColor">Violin Color:</label><br>
+        <input type="color" id="violinColor" name="violinColor" value="#ff0000"><br><br>
+        
+        <input type="button" value="Generate LaTeX Code" onclick="generateLatexCode8()">
+    </form>
+    
+    <h3>Generated LaTeX Code:</h3>
+    <<textarea id="output8" rows="20" cols="70" readonly></textarea>
+    
+</div>
+<div id="form9" class="hidden">
+    <h3>COUNTOUR PLOT</h3>
+    <form onsubmit="return generateLaTeXCode9()">
+        <label for="expression">Mathematical Expression (in terms of x and y):</label><br>
+        <input type="text" id="expression" name="expression" value="sin(x) * cos(y)" required><br><br>
+        
+        <label for="xrange">Range for x (e.g., -2*pi:2*pi):</label><br>
+        <input type="text" id="xrange" name="xrange" value="-6.283:6.283" required><br><br>
+        
+        <label for="yrange">Range for y (e.g., -2*pi:2*pi):</label><br>
+        <input type="text" id="yrange" name="yrange" value="-6.283:6.283" required><br><br>
+        
+        <label for="contourNumber">Number of Contours:</label><br>
+        <input type="number" id="contourNumber" name="contourNumber" value="10" required><br><br>
+        
+        <label for="samples">Number of Samples (density):</label><br>
+        <input type="number" id="samples" name="samples" value="50" required><br><br>
+        
+        <label for="title">Plot Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+        
+        <label for="xlabel">X-axis Label:</label><br>
+        <input type="text" id="xlabel" name="xlabel" required><br><br>
+        
+        <label for="ylabel">Y-axis Label:</label><br>
+        <input type="text" id="ylabel" name="ylabel" required><br><br>
+        
+        <input type="submit" value="Generate LaTeX Code">
+    </form>
+    
+    <textarea id="output9" style="width:100%;height:200px;"></textarea>
+</div>
+<div id="form10" class="hidden">
+    <h3>SCATTER PLOT</h3>
+    <form id="dataForm">
+        <div>
+            <label for="title">Title:</label><br>
+            <input type="text" id="title" name="title"><br><br>
+        </div>
+    
+        <div>
+            <label for="xlabel">X-axis Label:</label><br>
+            <input type="text" id="xlabel" name="xlabel"><br><br>
+        </div>
+    
+        <div>
+            <label for="ylabel">Y-axis Label:</label><br>
+            <input type="text" id="ylabel" name="ylabel"><br><br>
+        </div>
+    
+        <div>
+            <label for="xmin">X-axis Minimum:</label><br>
+            <input type="number" id="xmin" name="xmin"><br><br>
+        </div>
+    
+        <div>
+            <label for="xmax">X-axis Maximum:</label><br>
+            <input type="number" id="xmax" name="xmax"><br><br>
+        </div>
+    
+        <div>
+            <label for="ymin">Y-axis Minimum:</label><br>
+            <input type="number" id="ymin" name="ymin"><br><br>
+        </div>
+    
+        <div>
+            <label for="ymax">Y-axis Maximum:</label><br>
+            <input type="number" id="ymax" name="ymax"><br><br>
+        </div>
+    
+        <div>
+            <label for="points">Enter points (x,y) separated by a comma, one pair per line:</label><br>
+            <textarea id="points" name="points" rows="10" cols="30"></textarea><br><br>
+        </div>
+        
+        <input type="button" value="Generate LaTeX Code" onclick="generateLaTeX10()">
+    </form>
+    
+    <pre id="output10"></pre>
+        
+</div>
+<script>
+    function showForm() {
+        // Get the value of the selected option
+        const selectedValue = document.getElementById('formSelector').value;
+
+        // Hide all forms initially
+        document.getElementById('form1').style.display = 'none';
+        document.getElementById('form2').style.display = 'none';
+        document.getElementById('form3').style.display = 'none';
+        document.getElementById('form4').style.display = 'none';
+        document.getElementById('form5').style.display = 'none';
+        document.getElementById('form6').style.display = 'none';
+        document.getElementById('form7').style.display = 'none';
+        document.getElementById('form8').style.display = 'none';
+        document.getElementById('form9').style.display = 'none';
+        document.getElementById('form10').style.display = 'none';
+        // Show the selected form
+        if (selectedValue === '1') {
+            document.getElementById('form1').style.display = 'block';
+
+        } else if (selectedValue === '2') {
+            document.getElementById('form2').style.display = 'block';
+
+        }else if(selectedValue ==='3'){
+            document.getElementById('form3').style.display= 'block';
+        }else if(selectedValue ==='4'){
+            document.getElementById('form4').style.display= 'block';
+        }else if(selectedValue ==='5'){
+            document.getElementById('form5').style.display= 'block';
+         }else if(selectedValue ==='6'){
+          document.getElementById('form6').style.display= 'block';
+        }else if(selectedValue ==='7'){
+          document.getElementById('form7').style.display= 'block';
+        }else if(selectedValue ==='8'){
+          document.getElementById('form8').style.display= 'block';
+        }else if(selectedValue ==='9'){
+          document.getElementById('form9').style.display= 'block';
+        }else if(selectedValue ==='10'){
+          document.getElementById('form10').style.display= 'block';
+        }
+    }
+    function generateLatex1() {
+            // Extract values from the form
+            const xlabel = document.getElementById("xlabel").value;
+            const ylabel = document.getElementById("ylabel").value;
+            const xmin = document.getElementById("xmin").value;
+            const xmax = document.getElementById("xmax").value;
+            const ymin = document.getElementById("ymin").value;
+            const ymax = document.getElementById("ymax").value;
+            const title = document.getElementById("title").value;
+            const grid = document.getElementById("grid").value === 'yes' ? "grid=major," : "";
+            const legend = document.getElementById("legend").value;
+            const coordinates = document.getElementById("coordinates").value.split(';').map(coord => `(${coord})`).join(' ');
+            const legendPosition = document.getElementById("legendPosition").value;
+            const color = document.getElementById("color").value;
+
+            // Generate LaTeX code
+            let latexCode1 = `
+            \\documentclass{article}
+\\usepackage{pgfplots}
+\\pgfplotsset{compat=1.17}
+\\begin{document}
+\\begin{tikzpicture}
+   \\begin{axis}[
+       title={${title}},
+       xlabel={${xlabel}},
+       ylabel={${ylabel}},
+       xmin=${xmin}, xmax=${xmax},
+       ymin=${ymin}, ymax=${ymax},
+       ${grid}
+       legend pos=${legendPosition}
+   ]
+       \\addplot[${color}] coordinates { ${coordinates} };
+       \\legend{${legend}}
+   \\end{axis}
+\\end{tikzpicture}
+\\end{document}
+            `;
+
+            document.getElementById("output1").value = latexCode1.trim();
+        }
+    function generateLaTeX2() {
+            let title2 = document.getElementById('title2').value;
+            let xLabel = document.getElementById('xLabel').value;
+            let yLabel = document.getElementById('yLabel').value;
+            let barColor = document.getElementById('barColor').value;
+            let barWidth = document.getElementById('barWidth').value;
+            let xData = document.getElementById('xData').value.split(',');
+            let yData = document.getElementById('yData').value.split(',');
+            let ybar = document.getElementById('ybar').value;
+            let latexCode = `\\documentclass{article}
+\\usepackage{pgfplots}
+\\pgfplotsset{compat=1.17}
+\\begin {document}            
+\\begin{tikzpicture}
+\\begin{axis}[
+    title={${title2}},
+    ybar=${ybar},
+    enlargelimits=0.15,
+    ylabel={${yLabel}},
+    xlabel={${xLabel}},
+    symbolic x coords={${xData.join(',')}},
+    xtick=data,
+    nodes near coords,
+    nodes near coords align={vertical},
+    bar width=${barWidth}pt,
+    ]
+    \\addplot[
+    fill=${barColor}
+    ]
+    coordinates {${xData.map((item, index) => `(${item.trim()}, ${yData[index].trim()})`).join(' ')}};
+   \\end{axis}
+\\end{tikzpicture}
+\\end{document}
+            `;
+
+            document.getElementById("output2").value = latexCode.trim();
+        }
+        function generateLatex3() {
+        let xlabel = document.getElementById('xlabel3').value;
+        let ylabel = document.getElementById('ylabel3').value;
+        let title = document.getElementById('title3').value;
+        let datapoints = document.getElementById('datapoints3').value.split(',');
+        let bins = document.getElementById('bins3').value;
+        let d3= document.getElementById('d3').value;
+        let da3= document.getElementById('da3').value;
+        let color = document.getElementById('color3').value;
+        
+
+        let latexCode = `
+\\begin{tikzpicture}
+\\begin{axis}[
+    xlabel={${xlabel}},
+    ylabel={${ylabel}},
+    title={${title}},
+    ymajorgrids=true,
+    xmajorgrids=true,
+    grid style=dashed,
+]
+\\addplot[
+    hist={
+    bins=${bins},
+    data min=${d3},
+    data max=${da3}
+    },
+    fill=${color}
+] table [y index=0] {
+data
+${datapoints.join('\n')}
+};
+\\end{axis}
+\\end{tikzpicture}
+        `;
+        document.getElementById("output3").value = latexCode.trim();
+    }
+    function generateLatexCode4() {
+            var categories = document.getElementById("categories").value.split(',');
+            var values = document.getElementById("values").value.split(',');
+            var title = document.getElementById("title").value;
+            
+            if (categories.length !== values.length) {
+                alert("Number of categories and values must be equal!");
+                return;
+            }
+
+            var pieData = categories.map(function(category, index) {
+                return values[index] + "/" + category.trim();
+            }).join(", ");
+           
+
+            var latexCode = "\\documentclass{article}\n" +
+                            "\\usepackage{pgf-pie}\n\n" +
+                            "\\begin{document}\n" +
+                           
+                            "\\begin{tikzpicture}\n" +
+                            "    \\pie{" + pieData + "}\n" +
+                           
+                            "\\end{tikzpicture}\n" +
+                            "\\end{document}";
+
+            document.getElementById("output4").value = latexCode.trim();
+        }
+        function generateLaTeX5() {
+            let dataPoints = document.getElementById('dataPoints').value.split(',');
+            let title = document.getElementById('title').value;
+            let xLabel = document.getElementById('xLabel').value;
+            let yLabel = document.getElementById('yLabel').value;
+
+            // You can add more logic based on other parameters...
+
+            let latexCode = `
+\\documentclass{article}
+\\usepackage{pgfplots}
+
+\\begin{document}
+
+\\begin{tikzpicture}
+    \\begin{axis}[
+        title={${title}},
+        xlabel={${xLabel}},
+        ylabel={${yLabel}},
+        ytick=data,
+        yticklabels={${dataPoints.map((_, idx) => `Item ${idx + 1}`).join(', ')}},
+        xmin=0, xmax=10
+    ]
+    \\addplot+[only marks] coordinates {${dataPoints.map((val, idx) => `(${val},${idx + 1})`).join(' ')}};
+    \\end{axis}
+\\end{tikzpicture}
+
+\\end{document}
+            `;
+
+            document.getElementById('output5').value = latexCode.trim();
+        }
+        function generateLatexCode6() {
+    var title = document.getElementById('title').value;
+    var xlabel = document.getElementById('xlabel').value;
+    var ylabel = document.getElementById('ylabel').value;
+    var dataSet1 = document.getElementById('dataSet1').value;
+    var dataSet2 = document.getElementById('dataSet2').value;
+
+    var latexCode = 
+`\\documentclass{standalone}
+\\usepackage{pgfplots}
+\\pgfplotsset{compat=1.17}
+
+\\begin{document}
+\\begin{tikzpicture}
+\\begin{axis}[
+    title={${title}},
+    xlabel={${xlabel}},
+    ylabel={${ylabel}},
+    ymin=0,
+    grid=major,
+    grid style={dashed,gray},
+]
+\\addplot+[thick, no markers, fill=blue!30] coordinates {(${dataSet1})} \\closedcycle;
+\\addplot+[thick, no markers, fill=red!30] coordinates {(${dataSet2})} \\closedcycle;
+\\end{axis}
+\\end{tikzpicture}
+\\end{document}`;
+
+    document.getElementById('output6').value = latexCode;
+}
+function generateLaTeXCode7() {
+    var label1 = document.getElementById("label1").value;
+    var label2 = document.getElementById("label2").value;
+    var label3 = document.getElementById("label3").value;
+    var median = document.getElementById("median").value;
+    var upperQuartile = document.getElementById("upperQuartile").value;
+    var lowerQuartile = document.getElementById("lowerQuartile").value;
+    var upperWhisker = document.getElementById("upperWhisker").value;
+    var lowerWhisker = document.getElementById("lowerWhisker").value;
+    var outliers = document.getElementById("outliers").value.split(',');
+
+    var outlierCoordinates = outliers.map(function(outlier) {
+        return "(0," + outlier.trim() + ")";
+    }).join(" ");
+
+    var latexCode = `
+\\documentclass{standalone}
+\\usepackage{pgfplots}
+\\begin{document}
+\\begin{tikzpicture}
+\\begin{axis}[
+    title={Box Plot Title},
+    ylabel={Values},
+    xtick={1,2,3},
+    xticklabels={${label1}, ${label2}, ${label3}},
+]
+\\addplot+[
+    boxplot prepared={
+        median=${median},
+        upper quartile=${upperQuartile},
+        lower quartile=${lowerQuartile},
+        upper whisker=${upperWhisker},
+        lower whisker=${lowerWhisker}
+    },
+    color=red,
+    every median/.style={thick,blue}
+] coordinates {${outlierCoordinates}};
+\\end{axis}
+\\end{tikzpicture}
+\\end{document}
+    `;
+
+    document.getElementById("output7").value = latexCode;
+}
+function generateLatexCode8() {
+    var title = document.getElementById('title').value;
+    var xAxisLabel = document.getElementById('xAxisLabel').value;
+    var yAxisLabel = document.getElementById('yAxisLabel').value;
+    var dataPairs = document.getElementById('dataPairs').value.split('\n');
+    var violinColor = document.getElementById('violinColor').value;
+    
+    var latexCode = "\\documentclass{standalone}\n" +
+                    "\\usepackage{pgfplots}\n" +
+                    "\\pgfplotsset{compat=1.16}\n\n" +
+                    "\\begin{document}\n\n" +
+                    "\\begin{tikzpicture}\n" +
+                    "\\begin{axis}[\n" +
+                    "title={" + title + "},\n" +
+                    "xlabel={" + xAxisLabel + "},\n" +
+                    "ylabel={" + yAxisLabel + "}\n" +
+                    "]\n" +
+                    "\\addplot+[violin, draw=black, thick, fill=" + violinColor + "] coordinates {\n";
+    for (var i = 0; i < dataPairs.length; i++) {
+        latexCode += "  " + dataPairs[i] + "\n";
+    }
+    latexCode += "};\n" +
+                 "\\end{axis}\n" +
+                 "\\end{tikzpicture}\n" +
+                 "\\end{document}";
+
+    // Show LaTeX code in pre tag
+    document.getElementById('output8').textContent = latexCode;
+}
+function generateLaTeXCode9() {
+        const expression = document.getElementById('expression').value;
+        const xrange = document.getElementById('xrange').value;
+        const yrange = document.getElementById('yrange').value;
+        const contourNumber = document.getElementById('contourNumber').value;
+        const samples = document.getElementById('samples').value;
+        const title = document.getElementById('title').value;
+        const xlabel = document.getElementById('xlabel').value;
+        const ylabel = document.getElementById('ylabel').value;
+
+        const latexCode = `
+\\documentclass{standalone}
+\\usepackage{pgfplots}
+\\pgfplotsset{compat=newest}
+
+\\begin{document}
+\\begin{tikzpicture}
+\\begin{axis}[
+    title={${title}},
+    xlabel={${xlabel}},
+    ylabel={${ylabel}},
+    view={0}{90},
+]
+
+\\addplot3[
+    contour gnuplot={number=${contourNumber}, labels over line},
+    samples=${samples},
+    domain=${xrange},
+    domain y=${yrange},
+]
+{ ${expression} };
+
+\\end{axis}
+\\end{tikzpicture}
+\\end{document}
+        `.trim();
+
+        document.getElementById('output9').value = latexCode;
+        return false; // to prevent form submission
+      }
+      function generateLaTeX10() {
+    var title = document.getElementById('title').value;
+    var xlabel = document.getElementById('xlabel').value;
+    var ylabel = document.getElementById('ylabel').value;
+    var xmin = document.getElementById('xmin').value;
+    var xmax = document.getElementById('xmax').value;
+    var ymin = document.getElementById('ymin').value;
+    var ymax = document.getElementById('ymax').value;
+    var pointsInput = document.getElementById('points').value;
+    var points = pointsInput.split('\n').filter(function(el) { return el.length !== 0 });
+
+
+    var latexCode = '\\documentclass{article}\n';
+    latexCode += '\\usepackage{pgfplots}\n';
+    latexCode += '\\pgfplotsset{compat=1.17}\n';
+    latexCode +='\\begin{document}\n';
+    latexCode += '\\begin{tikzpicture}\n';
+    latexCode += '\\begin{axis}[\n';
+    latexCode += 'title={' + title + '},\n';
+    latexCode += 'xlabel={' + xlabel + '},\n';
+    latexCode += 'ylabel={' + ylabel + '},\n';
+    latexCode += 'xmin=' + xmin + ',\n';
+    latexCode += 'xmax=' + xmax + ',\n';
+    latexCode += 'ymin=' + ymin + ',\n';
+    latexCode += 'ymax=' + ymax + ',\n';
+    latexCode += ']\n';
+    
+    latexCode += '\\addplot[scatter,only marks] coordinates {\n';
+    
+    points.forEach(function(point) {
+        var coords = point.split(',').map(function(el) { return el.trim(); });
+        if (coords.length === 2) {
+            latexCode += '(' + coords[0] + ',' + coords[1] + ')\n';
+        }
+    });
+    
+    latexCode += '};\n';
+    latexCode += '\\end{axis}\n';
+    latexCode += '\\end{tikzpicture}\n';
+    latexCode +=  '\\end{document}';
+    
+    document.getElementById('output10').textContent = latexCode;
+}
+
+</script>
+
+</body>
+</html>
